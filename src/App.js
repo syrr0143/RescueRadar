@@ -1,24 +1,49 @@
-import logo from './logo.svg';
+
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+
 import './App.css';
+import Admin_login from './components/Admin_login';
+import Loginas from './components/Loginas';
+import Topdesign from './components/Topdesign';
+import Mobile from './components/Mobile';
+import OTP from './components/OTP';
+import Language from './components/Language';
+import Homepage from './components/Homepage';
+import Profile from './components/Profile';
+import Sidebar from './components/Sidebar';
+import EditProfile from './components/EditProfile';
+import DistrictAdminLogin from './components/DistrictAdminLogin';
+import ContactUs from './components/ContactUs';
+import FAQ from './components/FAQ';
+import AboutUs from './components/AboutUs';
+import Feedback from './components/Feedback';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <Routes>
+
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/Admin_login" element={<Admin_login />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/DistrictAdminLogin" element={<DistrictAdminLogin />} />
+        <Route path="/EditProfile" element={<EditProfile />} />
+        <Route path="/FAQ" element={<FAQ />} />
+        <Route path="/Feedback" element={<Feedback />} />
+        <Route path="/Homepage" element={<Homepage />} />
+        <Route path="/Language" element={<Language />} />
+        <Route exact path="/Loginas" element={<Loginas />} />
+        <Route path="/Mobile" element={<Mobile />} />
+        <Route path="/OTP" element={<OTP />} />
+        <Route path="/Profile" element={<Profile />} />
+
+      </Routes>
+    </Router>
+
+
   );
 }
 
