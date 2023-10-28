@@ -17,7 +17,7 @@
 
 
 .box-wrapper {
-  height: 95vh;
+ 
  
   width: 100%;
   display: flex;
@@ -91,8 +91,9 @@ text-transform: capitalize;
 .heading {
  margin-top: 10vh;
   color: #fff;
-  font-size: 32px;
+  font-size: 2rem;
 }
+
 
 .image
 {
@@ -119,7 +120,7 @@ text-transform: capitalize;
 {
   color: #000;
 font-family: Rubik;
-font-size: 24px;
+font-size: 1.5rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -196,7 +197,7 @@ background: var(--Gradient-1, linear-gradient(117deg, #031F13 -31.66%, #12AB69 1
   padding: 9.649px;
   justify-content: center;
   align-items: center;
-width: 10%;
+
   
   border: 1.206px solid #FFF;
   background: var(--Primary, #12AB69);
@@ -236,10 +237,11 @@ width: 10%;
   border-radius: 15px;
   box-shadow: 1.5px 1.5px 1.5px 0px rgba(0, 0, 0, 0.25), 7.5px 7.5px 10.5px 0px rgba(0, 0, 0, 0.25), -1.2px -1.5px 1.5px 0px rgba(255, 255, 255, 0.85), -6px -6px 7.5px 0px rgba(255, 255, 255, 0.15);
   height: 12vh;
+
 }
 .wider-input
 {
-  width: 35vw;
+ width: 35vw;
 }
 
 
@@ -279,6 +281,38 @@ width: 10%;
 .rating:hover > input:checked ~ label:before{ opacity: 0; }
 
 
+@media (max-width: 814px) {
+  /* Target a specific class, e.g., .my-class */
+  .box-wrapper{
+    margin-top: 0vh;
+  }
+  .containerss{
+    min-height: 20vh;
+  }
+  .front-design{
+    height: 16vh;
+    width: 100vw;
+    border-radius: 0vh 0vh 11vh 11vh;
+  }
+  .wider-input{
+    width: 65vw;
+    font-size: 1.5rem;
+  }
+  .user{
+    height: 134px;
+    width: 507px;
+  }
+  .district-admin{
+    width: 507px;
+  }
 
+  .district-admin{
+    height: 134px;
+  }
+  .image{
+    height: 2vh;
+    width: 7vw;
+  }
+}
 
 

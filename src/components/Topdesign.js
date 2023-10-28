@@ -1,6 +1,6 @@
 import React from 'react';
 import logobg from '../images/logobg.png';
-import user from '../images/user.png';
+// import user from '../images/user.png';
 // import './Topdesign.css'; // Import a custom CSS file for any additional styling
 
 const Topdesign = () => {

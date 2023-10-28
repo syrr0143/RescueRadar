@@ -12,21 +12,24 @@ import OTP from './components/OTP';
 import Language from './components/Language';
 import Homepage from './components/Homepage';
 import Profile from './components/Profile';
-import Sidebar from './components/Sidebar';
+// import Sidebar from './components/Sidebar';
 import EditProfile from './components/EditProfile';
 import DistrictAdminLogin from './components/DistrictAdminLogin';
 import ContactUs from './components/ContactUs';
 import FAQ from './components/FAQ';
 import AboutUs from './components/AboutUs';
 import Feedback from './components/Feedback';
+import AdminHomepage from './components/AdminHomepage';
+import UserHomepage from './components/UserHomepage';
 
 function App() {
   return (
-
+<>
     <Router>
       <Routes>
 
         <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/" element={<Loginas />} />
         <Route path="/Admin_login" element={<Admin_login />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/DistrictAdminLogin" element={<DistrictAdminLogin />} />
@@ -39,11 +42,14 @@ function App() {
         <Route path="/Mobile" element={<Mobile />} />
         <Route path="/OTP" element={<OTP />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/AdminHomepage" element={<AdminHomepage />} />
+        <Route path="/UserHomepage" element={<UserHomepage />} />
 
       </Routes>
     </Router>
+   
 
-
+</>
   );
 }
 

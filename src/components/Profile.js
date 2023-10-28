@@ -1,8 +1,7 @@
+import React, { useEffect, useState } from 'react';
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
+import { Link, useNavigate, useParams } from 'react-router-dom'; // Import useParams
+
 import user from '../images/editprofile.svg';
 import lan from '../images/language.svg';
 import logo from '../images/logo.png';
@@ -16,23 +15,38 @@ import fb from '../images/feedback.svg';
 import dta from '../images/download.gif';
 
 export default function Profile() {
+   
     const navigate = useNavigate();
+    // const { fullName, mobileNumber } = useParams(); // Use useParams to get fullName and mobileNumber from 
+    const fullName = localStorage.getItem('fullName');
+  const mobileNumber = localStorage.getItem('mobileNumber');
+
     const [selectedImage, setSelectedImage] = useState(null);
 
     // Modify this function to handle image selection
+    useEffect(() => {
+        console.log('useEffect is running');
+        const savedImage = localStorage.getItem('selectedImage');
+        if (savedImage) {
+            setSelectedImage(savedImage);
+        }
+    }, []);
+    
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
+            const imageUrl = URL.createObjectURL(file);
             // You can perform additional validation here if needed
-            setSelectedImage(URL.createObjectURL(file));
+            setSelectedImage(imageUrl);
+            localStorage.setItem('selectedImage', imageUrl);
         }
     };
 
     const handleEditProfile = (e) => {
         e.preventDefault();
-        // Perform your submit logic here
-        // Redirect to the Language page after successful submit
-        navigate('/EditProfile'); // Replace '/Language' with the correct path
+        
+        // Pass the selectedImage as state when navigating to EditProfile
+        navigate('/EditProfile', { state: { selectedImage } });
     };
     const handleLanguage = (e) => {
         e.preventDefault();
@@ -60,38 +74,44 @@ export default function Profile() {
     };
     const handleLogout = (e) => {
         e.preventDefault();
-        navigate('/Loginas'); // Replace '/Language' with the correct path
+    
+        // Clear user details from local storage
+        localStorage.removeItem('selectedImage');
+        localStorage.removeItem('fullName');
+        localStorage.removeItem('mobileNumber');
+    
+        navigate('/Loginas'); // Replace '/Loginas' with the correct path
     };
 
     return (
         <div style={{ backgroundColor: '#EEEEEE', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <nav className="navbar navbar-expand-lg navbar-bg text-colour fixed-top" style={{ height: '12%', top: 0, zIndex: 1000 }}>
+             <nav className="navbar navbar-expand-lg navbar-bg text-colour fixed-top" >
                 <div className="container-fluid">
-                    
-                    <a className="navbar-brand" href="#" ><img src={logo} alt="" style={{ width: '70px', height: '55px' }} onClick={handleLogo} /></a>
+                    <Link className="navbar-brand" to="/UserHomepage"><img src={logo} alt="" style={{ width: "70px", height: "55px" }} /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav mx-auto"> {/* Centered item */}
                             <li className="nav-item">
-                                <a className="nav-link active text-center" aria-current="page" href="#" style={{ color: '#FFF', fontSize: '24px' }}>Rescue <span style={{ color: '#EB801B' }}>Radar</span></a>
+                                <Link className="nav-link active text-center" aria-current="page" to="/UserHomepage" style={{ color: "#FFF", fontSize: "24px" }}>Rescue <span style={{ color: "#EB801B" }}>Radar</span></Link>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto"> {/* Right-aligned items */}
                             <li className="nav-item">
-                                <a className="nav-link" style={{ color: '#FFF', fontSize: '16px' }} href="#" >Profile</a>
+                                <Link className="nav-link" style={{ color: "#FFF", fontSize: "16px" }} to="/Profile" >Profile</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#" style={{ color: '#FFF', fontSize: '16px' }} onClick={handleLanguage}s>Language</a>
+                                <Link className="nav-link" to="/Language" style={{ color: "#FFF", fontSize: "16px" }} >Language</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#" style={{ color: '#FFF', fontSize: '16px' }} onClick={handleLogout}>Logout</a>
+                                <Link className="nav-link" to="/Loginas" style={{ color: "#FFF", fontSize: "16px" }} onClick={handleLogout}>Logout</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+                             
             <div style={{ backgroundColor: '#D9FBEE', minHeight: '100vh', marginRight: '10%', position: 'fixed', top: '60px', zIndex: 999 }}>
                 <div style={{ backgroundColor: '#D9FBEE', minHeight: '100vh', marginRight: '10%', position: 'fixed' }}>
                     <nav className="sidebar">
@@ -118,10 +138,10 @@ export default function Profile() {
                             {/* End of modification */}
                             <div className='text-center'>
                                 <h1 style={{ fontWeight: '400', lineHeight: 'normal', color: '#031F13', fontSize: '24px', color: '#FFFFFF' }}>
-                                    Your Name
+                                {fullName}
                                 </h1>
                                 <h1 style={{ fontWeight: '400', lineHeight: 'normal',  color: '#031F13', fontSize: '24px', color: '#FFFFFF' }}>
-                                    Mobile Number
+                                 {mobileNumber}
                                 </h1>
                             </div>
                         </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from '../images/logo.png'
 
 import { Link, useNavigate } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 
 export default function Feedback() {
     const navigate = useNavigate();
@@ -24,16 +24,16 @@ export default function Feedback() {
 
     return (
         <div style={{ backgroundColor: "#EEEEEE", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-            <nav className="navbar navbar-expand-lg navbar-bg text-colour fixed-top">
+            <nav className="navbar navbar-expand-lg navbar-bg text-colour fixed-top" >
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/Homepage"><img src={logo} alt="" style={{ width: "70px", height: "55px" }} /></Link>
+                    <Link className="navbar-brand" to="/UserHomepage"><img src={logo} alt="" style={{ width: "70px", height: "55px" }} /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item">
-                                <Link className="nav-link active text-center" aria-current="page" to="/Homepage" style={{ color: "#FFF", fontSize: "24px" }}>Rescue <span style={{ color: "#EB801B" }}>Radar</span></Link>
+                                <Link className="nav-link active text-center" aria-current="page" to="/UserHomepage" style={{ color: "#FFF", fontSize: "24px" }}>Rescue <span style={{ color: "#EB801B" }}>Radar</span></Link>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto">
@@ -50,11 +50,11 @@ export default function Feedback() {
                     </div>
                 </div>
             </nav>
-            <div className="contact-us" style={{ marginTop: "8%", marginLeft: "39%", marginBottom: "1%" }}>
+            <div className="contact-us" style={{ marginTop: " 15vh", marginLeft: "39%", marginBottom: "1%" }}>
                 <p>Feedback</p>
             </div>
 
-            <div className="container" style={{ marginLeft: "20%" }}>
+            <div style={{justifyContent:"center",display:"flex"}}>
                 <table className="table table-borderless" style={{ width: "60%", background: "#EEEEEE" }}>
                     <tbody>
                         <tr>

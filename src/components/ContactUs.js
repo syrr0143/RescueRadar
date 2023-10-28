@@ -25,14 +25,14 @@ const handleLogout = (e)=>{
         <div style={{ backgroundColor: "#EEEEEE", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <nav className="navbar navbar-expand-lg navbar-bg text-colour fixed-top" >
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/Homepage"><img src={logo} alt="" style={{ width: "70px", height: "55px" }} /></Link>
+                    <Link className="navbar-brand" to="/UserHomepage"><img src={logo} alt="" style={{ width: "70px", height: "55px" }} /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav mx-auto"> {/* Centered item */}
                             <li className="nav-item">
-                                <Link className="nav-link active text-center" aria-current="page" to="/Homepage" style={{ color: "#FFF", fontSize: "24px" }}>Rescue <span style={{ color: "#EB801B" }}>Radar</span></Link>
+                                <Link className="nav-link active text-center" aria-current="page" to="/UserHomepage" style={{ color: "#FFF", fontSize: "24px" }}>Rescue <span style={{ color: "#EB801B" }}>Radar</span></Link>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto"> {/* Right-aligned items */}
@@ -43,14 +43,14 @@ const handleLogout = (e)=>{
                                 <Link className="nav-link" to="/Language" style={{ color: "#FFF", fontSize: "16px" }} >Language</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="Loginas" style={{ color: "#FFF", fontSize: "16px" }} >Logout</Link>
+                                <Link className="nav-link" to="/Loginas" style={{ color: "#FFF", fontSize: "16px" }} >Logout</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <div className="contact-us  " style={{ marginTop: "7%", marginLeft: "39.3%" }}>
+            <div className="contact-us  " style={{ marginTop: "15vh", marginLeft: "38.0%" }}>
                 <p >Contact Us</p>
             </div>
 
