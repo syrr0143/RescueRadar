@@ -14,12 +14,13 @@ import about from '../images/about.svg';
 import fb from '../images/feedback.svg';
 import dta from '../images/download.gif';
 
-export default function Profile() {
-   
+export default function Profile(props) {
+
     const navigate = useNavigate();
     // const { fullName, mobileNumber } = useParams(); // Use useParams to get fullName and mobileNumber from 
-    const fullName = localStorage.getItem('fullName');
-  const mobileNumber = localStorage.getItem('mobileNumber');
+    // const profileDetails = props.profileDetails;
+    const { profileDetails } = props;
+   
 
     const [selectedImage, setSelectedImage] = useState(null);
 
@@ -31,7 +32,7 @@ export default function Profile() {
             setSelectedImage(savedImage);
         }
     }, []);
-    
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -44,7 +45,7 @@ export default function Profile() {
 
     const handleEditProfile = (e) => {
         e.preventDefault();
-        
+
         // Pass the selectedImage as state when navigating to EditProfile
         navigate('/EditProfile', { state: { selectedImage } });
     };
@@ -74,18 +75,18 @@ export default function Profile() {
     };
     const handleLogout = (e) => {
         e.preventDefault();
-    
+
         // Clear user details from local storage
         localStorage.removeItem('selectedImage');
         localStorage.removeItem('fullName');
         localStorage.removeItem('mobileNumber');
-    
+
         navigate('/Loginas'); // Replace '/Loginas' with the correct path
     };
 
     return (
         <div style={{ backgroundColor: '#EEEEEE', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-             <nav className="navbar navbar-expand-lg navbar-bg text-colour fixed-top" >
+            <nav className="navbar navbar-expand-lg navbar-bg text-colour fixed-top" >
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/UserHomepage"><img src={logo} alt="" style={{ width: "70px", height: "55px" }} /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,11 +112,11 @@ export default function Profile() {
                     </div>
                 </div>
             </nav>
-                             
+
             <div style={{ backgroundColor: '#D9FBEE', minHeight: '100vh', marginRight: '10%', position: 'fixed', top: '60px', zIndex: 999 }}>
                 <div style={{ backgroundColor: '#D9FBEE', minHeight: '100vh', marginRight: '10%', position: 'fixed' }}>
                     <nav className="sidebar">
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '90vh' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '90vh' }}>
                             {/* Modify the following section to allow image selection */}
 
                             <input
@@ -127,21 +128,21 @@ export default function Profile() {
                             />
                             <label htmlFor="profileImage" style={{ cursor: 'pointer' }}>
                                 {selectedImage ? (
-                                    <img src={selectedImage} alt="Profile" style={{ width: '130px',height:"130px", borderRadius: '50%' }} />
+                                    <img src={selectedImage} alt="Profile" style={{ width: '130px', height: "130px", borderRadius: '50%' }} />
                                 ) : (
                                     <>
                                         <img src={user} alt="Edit Profile" style={{ width: '3%', marginRight: '3%' }} />
-                                       <img src={user} alt="" />
+                                        <img src={user} alt="" />
                                     </>
                                 )}
                             </label>
                             {/* End of modification */}
                             <div className='text-center'>
                                 <h1 style={{ fontWeight: '400', lineHeight: 'normal', color: '#031F13', fontSize: '24px', color: '#FFFFFF' }}>
-                                {fullName}
+                                    {profileDetails.fullName}
                                 </h1>
-                                <h1 style={{ fontWeight: '400', lineHeight: 'normal',  color: '#031F13', fontSize: '24px', color: '#FFFFFF' }}>
-                                 {mobileNumber}
+                                <h1 style={{ fontWeight: '400', lineHeight: 'normal', color: '#031F13', fontSize: '24px', color: '#FFFFFF' }}>
+                                    {props.mobileNumber}
                                 </h1>
                             </div>
                         </div>

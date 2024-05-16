@@ -23,12 +23,16 @@ import AdminHomepage from './components/AdminHomepage';
 import UserHomepage from './components/UserHomepage';
 
 function App() {
+  const profileDetails = {
+    fullName:"sumit yadav",
+    mobileNumber :"9998494941"
+  }
   return (
 <>
     <Router>
       <Routes>
 
-        <Route path="/AboutUs" element={<AboutUs />} />
+        {/* <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/" element={<Loginas />} />
         <Route path="/Admin_login" element={<Admin_login />} />
         <Route path="/ContactUs" element={<ContactUs />} />
@@ -40,10 +44,12 @@ function App() {
         <Route path="/Language" element={<Language />} />
         <Route exact path="/Loginas" element={<Loginas />} />
         <Route path="/Mobile" element={<Mobile />} />
-        <Route path="/OTP" element={<OTP />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/AdminHomepage" element={<AdminHomepage />} />
-        <Route path="/UserHomepage" element={<UserHomepage />} />
+        <Route path="/OTP" element={<OTP />} /> */}
+        <Route path="/Profile" element={<Profile profileDetails = {profileDetails}>
+          <p>This content is children props</p>
+        </Profile>} />
+        {/* <Route path="/AdminHomepage" element={<AdminHomepage />} />
+        <Route path="/UserHomepage" element={<UserHomepage />} /> */}
 
       </Routes>
     </Router>
